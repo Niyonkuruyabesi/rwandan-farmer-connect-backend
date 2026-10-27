@@ -1,0 +1,78 @@
+package rw.auca.rwandan_farmer_connect.controller;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import rw.auca.rwandan_farmer_connect.domain.FarmVisit;
+import rw.auca.rwandan_farmer_connect.service.FarmVisitService;
+
+@RestController 
+@RequestMapping ("/api/farm-visits")
+public class FarmVisitController {
+
+    @Autowired 
+    private FarmVisitService farmVisitService;
+
+    // save a farm visit
+
+    @PostMapping ("/save")
+    public ResponseEntity<String> save(@RequestBody FarmVisit farmVisit){
+        String message = farmVisitService.saveFarmVisit(farmVisit);
+        return new ResponseEntity<>(message, HttpStatus.CREATED);
+    }
+
+    // get all farm visit
+
+    @GetMapping ("/all")
+        public ResponseEntity<List<FarmVisit>> getAll(){
+            return new ResponseEntity<>(farmVisitService.getAllFarmVisits(), HttpStatus.OK);
+        }
+
+    // get a farm visit by ID
+    
+    @GetMapping ("/{id}")
+    public ResponseEntity<?> getById(@PathVariable UUID id){
+        Optional<FarmVisit> farmVisit = farmVisitService.getFarmerVisitById(id);
+        if(farmVisit.isEmpty()){
+            return new ResponseEntity<>("The farm visit with thatid does not exist", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(farmVisit.get(), HttpStatus.OK);
+    }
+
+    // update a farm visit
+
+    @PutMapping ("/update/{id}")
+    public ResponseEntity<String> update(@PathVariable UUID id, @RequestBody FarmVisit farmVisit) {
+        String message = farmVisitService.updateFarmVisit(id, farmVisit);
+        if (message.contains("does not exist")) {
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    // delete a farm visit
+
+    @DeleteMapping ("/delete/{id}")
+    public ResponseEntity<String> delete(@PathVariable UUID id) {
+        String message = farmVisitService.deleteFarmVisit(id);
+        if (message.contains("does not exist")){
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    
+}
