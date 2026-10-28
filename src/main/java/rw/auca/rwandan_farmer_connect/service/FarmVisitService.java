@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import rw.auca.rwandan_farmer_connect.domain.FarmVisit;
 import rw.auca.rwandan_farmer_connect.domain.VisitStatus;
 import rw.auca.rwandan_farmer_connect.repository.FarmVisitRepository;
@@ -17,12 +18,29 @@ public class FarmVisitService {
     @Autowired 
     private FarmVisitRepository farmVisitRepository;
 
-    // save a farmVisit
+   
 
-    public String saveFarmVisit(FarmVisit farmVisit){
-        farmVisitRepository.save(farmVisit);
-        return "Farm visit saved successfully";
+   // D1: safe saving
+
+   public String saveFarmVisit(FarmVisit farmVisit){
+
+    if (farmVisit.getVisitDate().isBefore(LocalDate.now())){
+        return "Farm visit date cannot be in the past";
     }
+    boolean busy = farmVisitRepository.existsByAgronomist_IdAndVisitDateAndStatusNot(
+        farmVisit.getAgronomist().getId(), farmVisit.getVisitDate(), VisitStatus.DECLINED);
+
+        if(busy)
+            { 
+                return "Agronomist already has a farm visit on that date";}
+   
+
+   farmVisit.setStatus(VisitStatus.REQUESTED);
+   farmVisitRepository.save(farmVisit);
+   return "farm visit saved successfully";
+}
+
+
 
     // get all farmVisit
 
@@ -71,6 +89,33 @@ public class FarmVisitService {
     public List<FarmVisit> getFarmVisitsBetween(LocalDate start, LocalDate end){
         return farmVisitRepository.findByVisitDateBetweenOrderByVisitDateAsc(start, end);
     }
+
+    // D2: status flow
+
+    public String changeStatus(UUID id, VisitStatus newStatus){
+        Optional<FarmVisit> found = farmVisitRepository.findById(id);
+        if(found.isEmpty()){
+            return "The farm visit with that id does not exist";
+        }
+        FarmVisit farmVisit = found.get();
+        VisitStatus current = farmVisit.getStatus();
+
+        boolean allowed = 
+        (current == VisitStatus.REQUESTED
+            &&(newStatus == VisitStatus.ACCEPTED || newStatus == VisitStatus.DECLINED)
+        ) || (current == VisitStatus.ACCEPTED
+            &&(newStatus == VisitStatus.VISITED || newStatus == VisitStatus.DECLINED)
+        );
+
+        if(!allowed){
+            return "Cannot change status from " + current + " to " + newStatus;
+        }
+
+        farmVisit.setStatus(newStatus);
+        farmVisitRepository.save(farmVisit);
+        return "Farm visit status updated successfully";
+    }
+  
 
 
 

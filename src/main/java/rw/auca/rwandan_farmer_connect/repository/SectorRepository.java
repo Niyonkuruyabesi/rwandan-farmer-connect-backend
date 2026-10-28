@@ -1,6 +1,7 @@
 package rw.auca.rwandan_farmer_connect.repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +16,9 @@ public interface SectorRepository extends JpaRepository<Sector, UUID> {
         + "ORDER BY s.sectorNumber ASC"
     )
     List<Sector> findFreeSectors();
+
+
+    Optional<Sector> findBySectorNumber(int SectorNumber);
 
 
 }

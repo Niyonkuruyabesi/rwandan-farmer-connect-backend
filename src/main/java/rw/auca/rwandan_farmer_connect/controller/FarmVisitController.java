@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -29,11 +30,16 @@ public class FarmVisitController {
     @Autowired 
     private FarmVisitService farmVisitService;
 
-    // save a farm visit
-
+    // D1: safe saving
     @PostMapping ("/save")
     public ResponseEntity<String> save(@RequestBody FarmVisit farmVisit){
         String message = farmVisitService.saveFarmVisit(farmVisit);
+        if(message.contains("past")){
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        }
+        if (message.contains("already")){
+            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
 
@@ -92,6 +98,20 @@ public class FarmVisitController {
         LocalDate startDate = LocalDate.parse(start);
         LocalDate endDate = LocalDate.parse(end);
         return new ResponseEntity<>(farmVisitService.getFarmVisitsBetween(startDate, endDate), HttpStatus.OK);
+    }
+
+    // D2: status flow
+
+    @PatchMapping ("/{id}/status")
+    public ResponseEntity<String> changeStatus(@PathVariable UUID id, @RequestParam VisitStatus status){
+        String message = farmVisitService.changeStatus(id, status);
+        if(message.contains("does not exist")){
+            return new  ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+        if(message.contains("Cannot change")){
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(message, HttpStatus.OK);
     }
 
     

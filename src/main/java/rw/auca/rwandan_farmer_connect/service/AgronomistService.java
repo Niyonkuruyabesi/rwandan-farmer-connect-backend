@@ -7,14 +7,25 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
 import rw.auca.rwandan_farmer_connect.domain.Agronomist;
+import rw.auca.rwandan_farmer_connect.domain.Crop;
+import rw.auca.rwandan_farmer_connect.domain.Sector;
 import rw.auca.rwandan_farmer_connect.repository.AgronomistRepository;
+import rw.auca.rwandan_farmer_connect.repository.CropRepository;
+import rw.auca.rwandan_farmer_connect.repository.SectorRepository;
 
 @Service 
 public class AgronomistService {
 
     @Autowired 
     private AgronomistRepository agronomistRepository;
+
+    @Autowired 
+    private CropRepository cropRepository;
+
+    @Autowired 
+    private SectorRepository sectorRepository;
 
     // save agronomist
 
@@ -64,6 +75,52 @@ public class AgronomistService {
 
     public List<Agronomist> getAgronomistsByCropName(String name){
         return agronomistRepository.findAgronomistsByCropName(name);
+    }
+
+    // D3: add one crop to an agronomist
+
+    @Transactional 
+    public String addCrop (UUID agronomistId, UUID cropId){
+        Optional<Agronomist> foundAgronomist = agronomistRepository.findById(agronomistId);
+        if(foundAgronomist.isEmpty()){
+            return "The agronomist with that id does not exist";
+        }
+        Optional<Crop> foundCrop = cropRepository.findById(cropId);
+        if(foundCrop.isEmpty()){
+            return "That crop does not exist";
+        }
+        Agronomist agronomist = foundAgronomist.get();
+        Crop crop = foundCrop.get();
+
+        if(agronomist.getCrops().contains(crop)){
+            return "The agronomist already has that crop";
+        }
+        agronomist.getCrops().add(crop);
+        agronomistRepository.save(agronomist);
+        return "Crop added to the agronomist";
+    }
+
+    // D4: move an agronominst to another sector sector
+
+    public String changeSector(UUID agronomistId, int sectorNumber){
+        Optional<Agronomist> foundAgronomist = agronomistRepository.findById(agronomistId);
+        if(foundAgronomist.isEmpty()){
+            return "The agronomist with that id does not exist";
+        }
+        Optional<Sector> foundSector = sectorRepository.findBySectorNumber(sectorNumber);
+        if (foundSector.isEmpty()){
+            return "The sector with that sectorNumber does not exist";
+        }
+        Agronomist agronomist = foundAgronomist.get();
+        Sector sector = foundSector.get();
+
+        if(agronomistRepository.existsBySectorAndIdNot(sector, agronomistId)){
+            return " That sector is taken by another agronomist";
+
+        }
+        agronomist.setSector(sector);
+        agronomistRepository.save(agronomist);
+        return "Sector changed successfully";
     }
 
 }

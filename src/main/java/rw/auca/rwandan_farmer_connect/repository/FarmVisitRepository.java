@@ -15,4 +15,6 @@ public interface FarmVisitRepository extends JpaRepository<FarmVisit, UUID> {
 
     List<FarmVisit> findByVisitDateBetweenOrderByVisitDateAsc(LocalDate start, LocalDate end);
 
+    boolean existsByAgronomist_IdAndVisitDateAndStatusNot(UUID agronomistId, LocalDate visitDate, VisitStatus status );
+
 }

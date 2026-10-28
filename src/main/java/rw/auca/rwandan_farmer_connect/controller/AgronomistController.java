@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -82,6 +83,33 @@ public class AgronomistController {
     @GetMapping ("/by-crop")
     public ResponseEntity<List<Agronomist>> getByCrop(@RequestParam String name) {
         return new ResponseEntity<>(agronomistService.getAgronomistsByCropName(name), HttpStatus.OK);
+    }
+
+    // D3: add one crop to an agronomist
+    @PutMapping ("/{agronomistId}/crops/{cropId}")
+    public ResponseEntity<String> addCrop(@PathVariable UUID agronomistId, @PathVariable UUID cropId){
+        String message = agronomistService.addCrop(agronomistId, cropId);
+        if(message.contains("does not exist")){
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+        if (message.contains("already")){
+            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    // D4: move agronomist to another sector
+
+    @PatchMapping ("/{agronomistId}/sector")
+    public ResponseEntity<String> changeSector(@PathVariable UUID agronomistId, @RequestParam int sectorNumber){
+        String message = agronomistService.changeSector(agronomistId, sectorNumber);
+        if(message.contains("does not exist")){
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+        if(message.contains("taken")){
+            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(message, HttpStatus.OK);
     }
 
 

@@ -8,10 +8,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import rw.auca.rwandan_farmer_connect.domain.Agronomist;
+import rw.auca.rwandan_farmer_connect.domain.Sector;
 
 public interface AgronomistRepository extends JpaRepository<Agronomist, UUID> {
     
     @Query("SELECT a FROM Agronomist a JOIN a.crops c WHERE LOWER(c.name) = LOWER(:name)")
     List<Agronomist>findAgronomistsByCropName(@Param("name") String name);
+
+    boolean existsBySectorAndIdNot(Sector sector, UUID id);
+
 
 }
