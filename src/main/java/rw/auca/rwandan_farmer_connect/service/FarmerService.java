@@ -65,4 +65,10 @@ public class FarmerService {
         return "farmer deleted successfully";
     }
 
+    // get farmers by last name
+
+    public List<Farmer> getFarmersByLastName(String lastName){
+        return farmerRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
+    }
+
 }

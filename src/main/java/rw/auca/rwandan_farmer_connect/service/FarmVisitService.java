@@ -1,5 +1,6 @@
 package rw.auca.rwandan_farmer_connect.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -7,7 +8,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rw.auca.rwandan_farmer_connect.domain.FarmVisit;
-
+import rw.auca.rwandan_farmer_connect.domain.VisitStatus;
 import rw.auca.rwandan_farmer_connect.repository.FarmVisitRepository;
 
 @Service 
@@ -57,6 +58,18 @@ public class FarmVisitService {
         }
         farmVisitRepository.deleteById(id);
         return "Farm visit deleted successfully";
+    }
+
+    // get farm visiit by status
+
+    public List<FarmVisit> getFarmVisitByStatus(VisitStatus status){
+        return farmVisitRepository.findByStatusOrderByVisitDateAsc(status);
+    }
+
+    // farm visits between two dates
+
+    public List<FarmVisit> getFarmVisitsBetween(LocalDate start, LocalDate end){
+        return farmVisitRepository.findByVisitDateBetweenOrderByVisitDateAsc(start, end);
     }
 
 
