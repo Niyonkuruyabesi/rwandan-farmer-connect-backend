@@ -71,4 +71,11 @@ public class CropController {
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
 
+    // get crop nobody holds
+
+    @GetMapping ("/unused")
+    public ResponseEntity<List<Crop>> getUnused(){
+        return new ResponseEntity<>(cropService.getUnusedCrops(), HttpStatus.OK);
+    }
+
 }

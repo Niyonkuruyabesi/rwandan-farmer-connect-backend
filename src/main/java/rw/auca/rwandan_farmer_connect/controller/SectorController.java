@@ -71,5 +71,12 @@ public class SectorController {
         return  new ResponseEntity<>(message, HttpStatus.OK);
     }
 
+    // get free sectors
+
+    @GetMapping ("/free")
+    public ResponseEntity<List<Sector>> getFree(){
+        return new ResponseEntity<>(sectorService.getFreeSectors(), HttpStatus.OK);
+    }
+
 
 }

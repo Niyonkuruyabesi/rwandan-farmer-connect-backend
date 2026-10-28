@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import rw.auca.rwandan_farmer_connect.domain.Farmer;
+import rw.auca.rwandan_farmer_connect.repository.AgronomistRepository;
 import rw.auca.rwandan_farmer_connect.repository.FarmerRepository;
 
 @Service 
@@ -15,6 +16,9 @@ public class FarmerService {
 
     @Autowired 
     private FarmerRepository farmerRepository;
+
+    @Autowired 
+    private AgronomistRepository agronomistRepository;
 
     // save a farmer
 
@@ -69,6 +73,15 @@ public class FarmerService {
 
     public List<Farmer> getFarmersByLastName(String lastName){
         return farmerRepository.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
+    }
+
+    // farmers of agronomist
+
+    public Optional<List<Farmer>> getFarmersOfAgronomist(UUID agronomistId){
+        if(!agronomistRepository.existsById(agronomistId)){
+            return Optional.empty();
+        }
+        return Optional.of(farmerRepository.findFarmersByAgronomistId(agronomistId));
     }
 
 }

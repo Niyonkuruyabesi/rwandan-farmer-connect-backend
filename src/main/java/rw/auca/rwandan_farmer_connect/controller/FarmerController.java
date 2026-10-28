@@ -83,4 +83,16 @@ public class FarmerController {
         return new ResponseEntity<>(farmerService.getFarmersByLastName(lastName), HttpStatus.OK);
 
     }
+
+    // farmers of agronomist
+
+    @GetMapping ("/of-agronomist/{agronomistId}")
+    public ResponseEntity<?> getOfAgronomist(@PathVariable  UUID agronomistId){
+        Optional<List<Farmer>> farmers = farmerService.getFarmersOfAgronomist(agronomistId);
+        if(farmers.isEmpty()){
+            return new ResponseEntity<>("The agronomist with that id does not exist", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(farmers.get(), HttpStatus.OK);
+        
+    }
 }

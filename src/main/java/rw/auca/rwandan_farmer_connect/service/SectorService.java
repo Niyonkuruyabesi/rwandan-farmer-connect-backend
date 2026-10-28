@@ -58,6 +58,12 @@ public class SectorService {
             sectorRepository.deleteById(id);
             return "Sector deleted successfully";
         }
+
+        //get free sectors
+
+        public List<Sector> getFreeSectors(){
+            return sectorRepository.findFreeSectors();
+        }
     }
 
 

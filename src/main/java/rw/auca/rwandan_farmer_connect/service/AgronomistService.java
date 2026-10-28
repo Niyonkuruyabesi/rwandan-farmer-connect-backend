@@ -60,4 +60,10 @@ public class AgronomistService {
         return "Agronomist deleted successfully";
     }
 
+    // agronomist who hold a crop
+
+    public List<Agronomist> getAgronomistsByCropName(String name){
+        return agronomistRepository.findAgronomistsByCropName(name);
+    }
+
 }

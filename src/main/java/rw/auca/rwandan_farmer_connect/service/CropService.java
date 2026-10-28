@@ -60,4 +60,10 @@ public class CropService {
         return "Crop deleted successfully";
     }
 
+    // get crops nobody holds
+
+    public List<Crop> getUnusedCrops(){
+        return cropRepository.findUnusedCrops();
+    }
+
 }
