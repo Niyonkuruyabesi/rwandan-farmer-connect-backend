@@ -1,0 +1,1160 @@
+{
+  "info": {
+    "_postman_id": "525bda5c-e479-48d8-881c-b427afb09ad9",
+    "name": "rwandan-farmer-connect-midterm.postman_collection.json",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58462367",
+    "_collection_link": "https://go.postman.co/collection/58462367-525bda5c-e479-48d8-881c-b427afb09ad9?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Part A - Domain Model and CRUD",
+      "item": [
+        {
+          "name": "A2 - Crops - Save",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Coffee\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/crops/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "crops",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Crops - Get All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/crops/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "crops",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Crops - Update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Updated Coffee\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/crops/update/b9b80cf0-b2f7-4cfd-9818-067c066b2438",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "crops",
+                "update",
+                "b9b80cf0-b2f7-4cfd-9818-067c066b2438"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Crops - Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/crops/delete/b9b80cf0-b2f7-4cfd-9818-067c066b2438",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "crops",
+                "delete",
+                "b9b80cf0-b2f7-4cfd-9818-067c066b2438"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Crops - Get by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/crops/2373e8e9-8834-44c2-bf64-8749c577dfb8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "crops",
+                "2373e8e9-8834-44c2-bf64-8749c577dfb8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Sectors - Save",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"sectorNumber\": 5\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/sectors/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sectors",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Sectors - Get All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/sectors/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sectors",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Sectors - Get By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/sectors/9786d3c5-be6a-4016-94ac-db170f8b0b07",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sectors",
+                "9786d3c5-be6a-4016-94ac-db170f8b0b07"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Sectors - Update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": \"9786d3c5-be6a-4016-94ac-db170f8b0b07\",\r\n    \"name\": \"Remera\",\r\n    \"sectorNumber\": \"1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/sectors/update/9786d3c5-be6a-4016-94ac-db170f8b0b07",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sectors",
+                "update",
+                "9786d3c5-be6a-4016-94ac-db170f8b0b07"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Sectors - Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/sectors/delete/0fd3f076-a74d-496f-a9ce-ac3476631558",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sectors",
+                "delete",
+                "0fd3f076-a74d-496f-a9ce-ac3476631558"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Agronomists - Save",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"firstName\": \"Jean\",\r\n  \"lastName\": \"Test\",\r\n  \"phoneNumber\": \"0788000005\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/agronomists/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "agronomists",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Agronomists - Get All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/agronomists/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "agronomists",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Agronomists - Get By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/agronomists/b6e6ecab-54c9-4394-98ee-0f8bf7e38589",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "agronomists",
+                "b6e6ecab-54c9-4394-98ee-0f8bf7e38589"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Agronomists - Update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"firstName\": \"Jean\",\r\n  \"lastName\": \"Updated\",\r\n  \"phoneNumber\": \"0788000005\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/agronomists/update/b6e6ecab-54c9-4394-98ee-0f8bf7e38589",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "agronomists",
+                "update",
+                "b6e6ecab-54c9-4394-98ee-0f8bf7e38589"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Agronomists - Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/agronomists/delete/b6e6ecab-54c9-4394-98ee-0f8bf7e38589",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "agronomists",
+                "delete",
+                "b6e6ecab-54c9-4394-98ee-0f8bf7e38589"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Farmers - Save",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"firstName\": \"Test\",\r\n  \"lastName\": \"Farmer\",\r\n  \"farmerCode\": \"FRM-TEST-99\",\r\n  \"phoneNumber\": \"0788000099\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/farmers/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farmers",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Farmers - Get All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farmers/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farmers",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Farmers - Get By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farmers/4046c595-c170-4f43-b75e-1e29ec6d030c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farmers",
+                "4046c595-c170-4f43-b75e-1e29ec6d030c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Farmers - Update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"firstName\": \"Updated\",\r\n  \"lastName\": \"Farmer\",\r\n  \"farmerCode\": \"FRM-TEST-99\",\r\n  \"phoneNumber\": \"0788000099\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/farmers/update/4046c595-c170-4f43-b75e-1e29ec6d030c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farmers",
+                "update",
+                "4046c595-c170-4f43-b75e-1e29ec6d030c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Farmers - Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farmers/delete/4046c595-c170-4f43-b75e-1e29ec6d030c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farmers",
+                "delete",
+                "4046c595-c170-4f43-b75e-1e29ec6d030c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Farm Visits - Save",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"visitDate\": \"2026-11-15\",\r\n  \"status\": \"REQUESTED\",\r\n  \"farmer\": {\r\n    \"id\": \"0f75e2b4-66b7-419a-b510-9a748a881049\"\r\n  },\r\n  \"agronomist\": {\r\n    \"id\":\"69520f14-ca0d-4e11-a298-73d48edcaeaf\"\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/farm-visits/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farm-visits",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Farm Visits - Get All",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farm-visits/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farm-visits",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Farm Visits - Get By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farm-visits/c5f7ccfa-d3ad-4fb4-a7bb-b1cfe2d99556",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farm-visits",
+                "c5f7ccfa-d3ad-4fb4-a7bb-b1cfe2d99556"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Farm Visits - Update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"agronomist\": {\r\n        \"crops\": [\r\n            {\r\n                \"id\": \"2373e8e9-8834-44c2-bf64-8749c577dfb8\",\r\n                \"name\": \"Maize\"\r\n            }\r\n        ],\r\n        \"email\": \"patrick@farmerconnect.rw\",\r\n        \"firstName\": \"Patrick\",\r\n        \"id\": \"64405b4a-8814-4ee9-9f56-7b693f9d8ec8\",\r\n        \"lastName\": \"Mugabo\",\r\n        \"sector\": {\r\n            \"id\": \"41a165c7-0851-43c2-9d8c-023fe615e92c\",\r\n            \"name\": \"Kacyiru\",\r\n            \"sectorNumber\": \"3\"\r\n        }\r\n    },\r\n    \"farmer\": {\r\n        \"farmerCode\": \"FRM-0043\",\r\n        \"firstName\": \"Alice\",\r\n        \"id\": \"0f75e2b4-66b7-419a-b510-9a748a881049\",\r\n        \"lastName\": \"Niyonzima\",\r\n        \"phone\": \"0788000002\",\r\n        \"village\": \"Nyagatovu\"\r\n    },\r\n    \"id\": \"c5f7ccfa-d3ad-4fb4-a7bb-b1cfe2d99556\",\r\n    \"purpose\": \"Dashboard test\",\r\n    \"status\": \"REQUESTED\",\r\n    \"visitDate\": \"2026-10-30\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/farm-visits/update/c5f7ccfa-d3ad-4fb4-a7bb-b1cfe2d99556",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farm-visits",
+                "update",
+                "c5f7ccfa-d3ad-4fb4-a7bb-b1cfe2d99556"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - Farm Visits - Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farm-visits/delete/c5f7ccfa-d3ad-4fb4-a7bb-b1cfe2d99556",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farm-visits",
+                "delete",
+                "c5f7ccfa-d3ad-4fb4-a7bb-b1cfe2d99556"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Part B - Derived Queries",
+      "item": [
+        {
+          "name": "B1 - Farmers - Search By Last Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farmers/by-last-name?lastName=niyonzima",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farmers",
+                "by-last-name"
+              ],
+              "query": [
+                {
+                  "key": "lastName",
+                  "value": "niyonzima"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B2 - Farm Visits - Search By Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farm-visits/by-status?status=REQUESTED",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farm-visits",
+                "by-status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "REQUESTED"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B3 - Farm Visits - Between Dates",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farm-visits/between?start=2026-10-01&end=2026-10-31",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farm-visits",
+                "between"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "2026-10-01"
+                },
+                {
+                  "key": "end",
+                  "value": "2026-10-31"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Part C - JPQL Queries",
+      "item": [
+        {
+          "name": "C1 - Agronomists - Search By Crop",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/agronomists/by-crop?name=maize",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "agronomists",
+                "by-crop"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "maize"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C2 - Sectors - Get Free Sectors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/sectors/free",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sectors",
+                "free"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C3 - Crops - Get Unused Crops",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/crops/unused",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "crops",
+                "unused"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C4 - Farmers - Get By Agronomist",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farmers/of-agronomist/69520f14-ca0d-4e11-a298-73d48edcaeaf",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farmers",
+                "of-agronomist",
+                "69520f14-ca0d-4e11-a298-73d48edcaeaf"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Part D – Business Rules",
+      "item": [
+        {
+          "name": "D1 - Farm Visits - Save With Business Rules",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"visitDate\": \"2026-11-20\",\r\n  \"farmer\": {\r\n    \"id\": \"0f75e2b4-66b7-419a-b510-9a748a881049\"\r\n  },\r\n  \"agronomist\": {\r\n    \"id\": \"69520f14-ca0d-4e11-a298-73d48edcaeaf\"\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/farm-visits/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farm-visits",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D2 - Farm Visits - Update Status",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farm-visits/38ee2a7e-557c-4c9d-a942-a07e2ad66210/status?status=ACCEPTED",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farm-visits",
+                "38ee2a7e-557c-4c9d-a942-a07e2ad66210",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "ACCEPTED"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D3 - Agronomists - Add Crop",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/agronomists/69520f14-ca0d-4e11-a298-73d48edcaeaf/crops/2373e8e9-8834-44c2-bf64-8749c577dfb8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "agronomists",
+                "69520f14-ca0d-4e11-a298-73d48edcaeaf",
+                "crops",
+                "2373e8e9-8834-44c2-bf64-8749c577dfb8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D4 - Agronomists - Change Sector",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/agronomists/69520f14-ca0d-4e11-a298-73d48edcaeaf/sector?sectorNumber=4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "agronomists",
+                "69520f14-ca0d-4e11-a298-73d48edcaeaf",
+                "sector"
+              ],
+              "query": [
+                {
+                  "key": "sectorNumber",
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Part E - Recommendations",
+      "item": [
+        {
+          "name": "E1 - Recommendations - Save",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"inputName\": \"NPK fertilizer\",\r\n  \"advice\": \"Apply two weeks after planting\",\r\n  \"quantityKg\": 50\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/recommendations/save?farmVisitId=38ee2a7e-557c-4c9d-a942-a07e2ad66210",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "recommendations",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "farmVisitId",
+                  "value": "38ee2a7e-557c-4c9d-a942-a07e2ad66210"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E2 - Recommendations - Get By Farmer Code",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/recommendations/farmer/FRM-0043",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "recommendations",
+                "farmer",
+                "FRM-0043"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "E3 - Recommendations - Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/recommendations/delete/4eb36a45-6149-4354-a5a5-8ee5cb03841c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "recommendations",
+                "delete",
+                "4eb36a45-6149-4354-a5a5-8ee5cb03841c"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Part F — Reports and Bulk Updates",
+      "item": [
+        {
+          "name": "F1 - Farm Visits - Stats By Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farm-visits/stats/by-status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farm-visits",
+                "stats",
+                "by-status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "F2 - Farm Visits - Cancel Day",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farm-visits/cancel-day?agronomistId=69520f14-ca0d-4e11-a298-73d48edcaeaf&date=2026-10-20",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farm-visits",
+                "cancel-day"
+              ],
+              "query": [
+                {
+                  "key": "agronomistId",
+                  "value": "69520f14-ca0d-4e11-a298-73d48edcaeaf"
+                },
+                {
+                  "key": "date",
+                  "value": "2026-10-20"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Bonus — Dashboard Summary",
+      "item": [
+        {
+          "name": "Bonus - Dashboard - Summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/dashboard/summary",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "dashboard",
+                "summary"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Bonus - Farm Visits - Pagination",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/farm-visits/page?page=0&size=5&sort=visitDate,desc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "farm-visits",
+                "page"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                },
+                {
+                  "key": "sort",
+                  "value": "visitDate,desc"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    }
+  ]
+}
