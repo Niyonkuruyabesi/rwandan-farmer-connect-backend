@@ -11,12 +11,16 @@ import org.springframework.stereotype.Service;
 import rw.auca.rwandan_farmer_connect.domain.FarmVisit;
 import rw.auca.rwandan_farmer_connect.domain.VisitStatus;
 import rw.auca.rwandan_farmer_connect.repository.FarmVisitRepository;
+import rw.auca.rwandan_farmer_connect.repository.RecommendationRepository;
 
 @Service 
 public class FarmVisitService {
 
     @Autowired 
     private FarmVisitRepository farmVisitRepository;
+
+    @Autowired 
+    private RecommendationRepository recommendationRepository;
 
    
 
@@ -68,15 +72,21 @@ public class FarmVisitService {
         return "Farm visit updated successfully";
     }
 
-    // delete a farmVisit
+    // E3: a farm visit that has recommendations cannot be deleted
 
     public String deleteFarmVisit(UUID id){
-        if(!farmVisitRepository.existsById(id)){
-            return "The farm visit with that id does not exist";
+        Optional<FarmVisit> found = farmVisitRepository.findById(id);
+        if(found.isEmpty()){
+            return "The farm visit with that id not exist";
+        }
+        if(recommendationRepository.existsByFarmVisit(found.get())){
+            return "That farm visit has recommendations, delete them first";
         }
         farmVisitRepository.deleteById(id);
         return "Farm visit deleted successfully";
     }
+
+   
 
     // get farm visiit by status
 
