@@ -117,5 +117,21 @@ public class FarmVisitController {
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
 
+    //F1: farm visits per status
+
+    @GetMapping ("/stats/by-status")
+    public ResponseEntity<List<Object[]>> getStats(){
+        return new ResponseEntity<>(farmVisitService.getFarmVisitStats(), HttpStatus.OK);
+    }
+
+    //F2: agronomist is absent
+
+    @PatchMapping ("/cancel-day")
+    public ResponseEntity<String> cancelDay(@RequestParam UUID agronomistId, @RequestParam String date){
+        LocalDate day = LocalDate.parse(date);
+        String message = farmVisitService.cancelDay(agronomistId, day);
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
     
 }

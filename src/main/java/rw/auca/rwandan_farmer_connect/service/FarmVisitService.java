@@ -8,6 +8,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
 import rw.auca.rwandan_farmer_connect.domain.FarmVisit;
 import rw.auca.rwandan_farmer_connect.domain.VisitStatus;
 import rw.auca.rwandan_farmer_connect.repository.FarmVisitRepository;
@@ -124,6 +125,20 @@ public class FarmVisitService {
         farmVisit.setStatus(newStatus);
         farmVisitRepository.save(farmVisit);
         return "Farm visit status updated successfully";
+    }
+
+    // F1: farm visit per status
+
+    public List<Object[]> getFarmVisitStats(){
+        return farmVisitRepository.countFarmVisitsStatus();
+    }
+
+    // F2: agronomist is absent
+
+    @Transactional 
+    public String cancelDay(UUID agronomistId, LocalDate date){
+        int count = farmVisitRepository.cancelDay(agronomistId, date, VisitStatus.DECLINED, VisitStatus.VISITED);
+        return count +"farm visits cancelled";
     }
   
 
