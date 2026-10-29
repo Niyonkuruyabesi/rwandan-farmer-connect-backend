@@ -6,6 +6,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
@@ -139,6 +141,12 @@ public class FarmVisitService {
     public String cancelDay(UUID agronomistId, LocalDate date){
         int count = farmVisitRepository.cancelDay(agronomistId, date, VisitStatus.DECLINED, VisitStatus.VISITED);
         return count +"farm visits cancelled";
+    }
+
+    // bonus: farm visits page by page
+
+    public Page<FarmVisit> getFarmVisitsPage(Pageable pageable){
+        return farmVisitRepository.findAll(pageable);
     }
   
 

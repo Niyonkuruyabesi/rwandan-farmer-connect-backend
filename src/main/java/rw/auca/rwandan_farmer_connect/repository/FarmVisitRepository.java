@@ -40,4 +40,9 @@ public interface FarmVisitRepository extends JpaRepository<FarmVisit, UUID> {
                   @Param ("declined") VisitStatus declined,
                   @Param ("visited") VisitStatus visited
 );
+
+// bonus dashboard
+long countByVisitDate(LocalDate visitDate);
+
+long countByStatus(VisitStatus status);
 }

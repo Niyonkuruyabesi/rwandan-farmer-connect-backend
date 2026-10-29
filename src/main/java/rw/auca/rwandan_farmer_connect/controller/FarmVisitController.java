@@ -6,6 +6,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -132,6 +136,24 @@ public class FarmVisitController {
         String message = farmVisitService.cancelDay(agronomistId, day);
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
+
+    // bonus: farm visits page by page
+
+    @GetMapping ("/page")
+    public ResponseEntity<Page<FarmVisit>> getPage(@RequestParam int page,
+                                                   @RequestParam  int size,
+                                                   @RequestParam String sort
+     ){
+        String[] parts = sort.split(",");
+        String field = parts[0];
+        Sort.Direction direction = Sort.Direction.ASC;
+        if(parts.length>1){
+            direction = Sort.Direction.fromString(parts[1]);
+
+        }
+        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, field));
+        return new ResponseEntity<>(farmVisitService.getFarmVisitsPage(pageable), HttpStatus.OK);
+     }
 
     
 }
